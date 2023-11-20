@@ -25,10 +25,10 @@ router.get('/:id', async (req, res) => {
       where: { id: req.params.id },
     });
     if(!categoryData) {
-      res.status(404).json({ message: 'No category exists '});
+      res.status(404).json({ message: 'No category exists'});
       return;
     }
-    res.json,status(200).json(categoryData);
+    res.json.status(200).json(categoryData);
   } catch (err) {
     res.status(500).json(err);
   }
