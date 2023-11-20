@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
         attributes: ['id', 'tag_name'],
       }
     ]
-  }).then((produycts) => {
+  }).then((products) => {
     res.json(products);
   }).catch((err) => {
     console.log(err);
