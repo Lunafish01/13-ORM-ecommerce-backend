@@ -34,16 +34,52 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   // create a new category
+  try {
+    const categoryData = await Category.create(req.body);
+    res.status(200).json(categoryData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(req.body, {
+    where: {id: req.params.id },
+  })
+  .then((updatedCategory) => {
+    if (!updatedCategory[0]) {
+      res.status(404).json({ message: 'No category exists'});
+      return;
+    }
+    res.json({message: 'Category update successful'});
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: { id: req.params.id },
+  })
+  .then((deletedCatgory) => {
+    if (!deletedCatgory) {
+      res
+        .status(404)
+        .json({ message: 'No category exists' });
+        return;
+    }
+    res.json({ message: 'Category delete successful' });
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 module.exports = router;
