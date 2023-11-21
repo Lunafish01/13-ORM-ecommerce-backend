@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(req.body, {
-    where: {id: req.params.id },
+    where: {id: req.params.id }
   })
   .then((updatedCategory) => {
     if (!updatedCategory[0]) {
@@ -69,9 +69,7 @@ router.delete('/:id', (req, res) => {
   })
   .then((deletedCatgory) => {
     if (!deletedCatgory) {
-      res
-        .status(404)
-        .json({ message: 'No category exists' });
+      res.status(404).json({ message: 'No category exists' });
         return;
     }
     res.json({ message: 'Category delete successful' });
