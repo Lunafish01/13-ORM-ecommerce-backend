@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
   })
   .then((tags) => {
     if (!tags) {
-      res.status(404).json({ message: ''})
+      res.status(404).json({ message: 'Error. No Tag or Id.'})
       return;
     }
     res.json(tags);
@@ -79,10 +79,10 @@ router.put('/:id', (req, res) => {
   })
   .then((updateTag) => {
     if (!updateTag[0]) {
-      res.status(404).json({ message: '' });
+      res.status(404).json({ message: 'Error. No Tag or Id.' });
       return;
     }
-    res.json({ message: '' });
+    res.json({ message: 'Update successful' });
   })
   .catch((err) => {
     console.log(err);
@@ -97,10 +97,10 @@ router.delete('/:id', (req, res) => {
   })
   .then((deletedTag) => {
     if (!deletedTag) {
-      res.status(404).json({ message: '' });
+      res.status(404).json({ message: 'Error. No Tag or Id.' });
       return;
     }
-    res.json({ message: '' });
+    res.json({ message: 'Delete successful' });
   })
   .catch((err) => {
     console.log(err);

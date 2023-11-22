@@ -51,10 +51,10 @@ router.put('/:id', (req, res) => {
   })
   .then((updatedCategory) => {
     if (!updatedCategory[0]) {
-      res.status(404).json({ message: 'No category exists'});
+      res.status(404).json({ message: 'Error. No category exists.'});
       return;
     }
-    res.json({message: 'Category update successful'});
+    res.json({message: 'Update successful'});
   })
   .catch((err) => {
     console.log(err);
@@ -69,10 +69,10 @@ router.delete('/:id', (req, res) => {
   })
   .then((deletedCatgory) => {
     if (!deletedCatgory) {
-      res.status(404).json({ message: 'No category exists' });
+      res.status(404).json({ message: 'Erro. No category exists.' });
         return;
     }
-    res.json({ message: 'Category delete successful' });
+    res.json({ message: 'Delete successful' });
   })
   .catch((err) => {
     console.log(err);

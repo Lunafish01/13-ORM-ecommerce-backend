@@ -44,7 +44,7 @@ router.get('/:id', (req, res) => {
     ]
   }).then((products) => {
     if (!products) {
-      res.status(404).json ({ message: '' });
+      res.status(404).json ({ message: 'Error! No prodeuct or Id' });
       return;
     }
     res.json(products);
@@ -138,10 +138,10 @@ router.delete('/:id', (req, res) => {
   })
   .then((deletedProduct) => {
     if (!deletedProduct) {
-      res.status(404).json({ message: '' });
+      res.status(404).json({ message: 'Error. No prodeuct or Id' });
       return;
     }
-    res.json({ message: '' });
+    res.json({ message: 'Delete Successful' });
   })
   .catch((err) => {
     res.status(500).json(err);
